@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    
+    <!-- Voice Input -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- Notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name=".AIAgentApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AIAgent"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        tools:targetApi="31">
+        
+        <!-- Launcher Activity -->
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AIAgent.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- API Setup -->
+        <activity
+            android:name=".ui.setup.ApiSetupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AIAgent.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <!-- Main Activity -->
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <!-- Chat Activity -->
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <!-- Code Editor -->
+        <activity
+            android:name=".ui.codeeditor.CodeEditorActivity"
+            android:exported="false" />
+        
+        <!-- Project History -->
+        <activity
+            android:name=".ui.history.ProjectHistoryActivity"
+            android:exported="false" />
+        
+        <!-- GitHub Auth -->
+        <activity
+            android:name=".ui.github.GitHubAuthActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="aiagent" android:host="github" />
+            </intent-filter>
+        </activity>
+        
+        <!-- File Provider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        
+        <!-- Download Service -->
+        <service
+            android:name=".service.DownloadService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        
+    </application>
+
+</manifest>

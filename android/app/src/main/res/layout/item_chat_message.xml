@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- User Message -->
+    <LinearLayout
+        android:id="@+id/layoutUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/primary_container"
+            android:layout_marginStart="64dp">
+
+            <TextView
+                android:id="@+id/tvUserMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello!"
+                android:textColor="@color/on_primary_container"
+                android:padding="12dp"
+                android:maxWidth="280dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- AI Message -->
+    <LinearLayout
+        android:id="@+id/layoutAi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_android"
+            android:background="@drawable/circle_background"
+            android:padding="4dp"
+            app:tint="@color/primary"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/surface_variant"
+            android:layout_marginEnd="64dp">
+
+            <TextView
+                android:id="@+id/tvAiMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi! How can I help you?"
+                android:textColor="@color/on_surface_variant"
+                android:padding="12dp"
+                android:maxWidth="280dp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</LinearLayout>
